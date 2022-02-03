@@ -1,0 +1,6 @@
+click
+dynaconf
+flask
+pycairo
+sqlalchemy
+texnomagic

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ symbol.abc.name }} > {{ symbol.name }} ({{ symbol.meaning }}) symbol{% endblock %}
+{% block header %}
+	<h1><a href="/">Words of Power</a> > <a href="{{ url_for('abc', abc=symbol.abc.handle) }}">{{ symbol.abc.name }}</a> > {{ symbol.name }} ({{ symbol.meaning }}) symbol</h1>
+{% endblock %}
+
+{% block content %}
+<img class="big-size" src="/dynamic/img/symbols/{{ symbol.abc.handle }}/{{ symbol.handle }}.svg" alt="{{ symbol.name }}" />
+{% endblock %}

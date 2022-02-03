@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{% block title %}{% endblock %} - wopweb</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+</head>
+
+<body>
+<section class="content">
+<header>
+{% block header %}{% endblock %}
+</header>
+
+{% block content %}{% endblock %}
+</section>
+<footer>
+	<div>served by <a href="https://github.com/texnoforge/wopweb">wopweb</a> using <a href="https://texnoforge.github.io/texnomagic/">texnomagic</a> - free software from <a href="https://texnoforge.dev">texnoforge</a> ⚙ report <a href="https://github.com/texnoforge/texnomagic/issues">bugs</a> 🐛</div>
+	<div><b>draw your own alphabet</b> using <a href="https://texnoforge.github.io/wopeditor/">wopeditor</a> and submit to <a href="https://wop.mod.io">wop.mod.io</a> (<a href="https://wop.mod.io/guides/words-of-power-mod-upload-howto">HOWTO guide</a>) to see it here 🧙</div>
+	<div><a href="https://texnoforge.dev/words-of-power/">Words of Power</a> project 📜</div>
+</footer>
+</body>
+</html>

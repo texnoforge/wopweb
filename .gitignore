@@ -1,0 +1,10 @@
+__pycache__
+/build
+/dist
+/data
+/site
+/out
+/test
+/test.db
+/wopweb.toml
+*.egg-info

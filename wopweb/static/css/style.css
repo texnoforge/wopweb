@@ -1,0 +1,55 @@
+body {
+	color: white;
+	background: black;
+	font: 18px Roboto, sans-serif;
+	text-align: center;
+}
+
+footer {
+	display: block;
+	clear: both;
+	margin-top: 100px;
+	line-height: 200%;
+}
+
+h1, h2, .breaker {
+	clear: both;
+}
+
+h1 {
+	font-size: 48px;
+}
+
+h2 {
+	font-size: 32px;
+	padding-top: 2em;
+}
+
+a {
+	color: white;
+}
+
+a:hover {
+	text-decoration: gray underline;
+}
+
+.symbol-preview {
+	display: block;
+	float: left;
+	margin: 20px;
+}
+
+.small-size {
+	width: 128px;
+	height: 128px;
+}
+
+.medium-size {
+	width: 256px;
+	height: 256px;
+}
+
+.big-size {
+	width: 960px;
+	height: 960px;
+}

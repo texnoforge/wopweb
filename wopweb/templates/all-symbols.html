@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+	<h1><a href="/">Words of Power</a> > {% block title %}all symbols overview{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+{% for meaning, symbols_ in symbols.items() %}
+<h2>{{ meaning }}</h2>
+{% for s in symbols_ %}
+<a class="symbol-preview" href="{{ url_for('symbol', abc=s.abc.handle, symbol=s.handle) }}" title="{{ s.name }}">
+	<img class="medium-size" src="/dynamic/img/symbols/{{ s.abc.handle }}/{{ s.handle }}.svg" alt="{{ s.name }}" />
+</a>
+{% endfor %}
+{% endfor %}
+{% endblock %}
