@@ -1,10 +1,8 @@
-__pycache__
+*.egg-info
+*.sqlite
 /build
 /dist
-/data
+/dynamic
 /site
-/out
-/test
-/test.db
 /wopweb.toml
-*.egg-info
+__pycache__
