@@ -22,9 +22,10 @@ def draw_symbol(symbol, out, format='svg'):
     ctx.paint()
     ctx.fill()
 
-    ctx.set_line_width(0.01)
     ctx.set_source_rgb(1.0, 1.0, 1.0)
-
+    ctx.set_line_width(0.03)
+    ctx.set_line_cap(cairo.LineCap.ROUND)
+    ctx.set_line_join(cairo.LineJoin.ROUND)
     for curve in drawing.curves_fit_area([0.05, 0.05], [0.9, 0.9]):
         x, y = curve[0]
         ctx.move_to(x, y)

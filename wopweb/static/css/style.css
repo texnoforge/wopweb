@@ -5,6 +5,10 @@ body {
 	text-align: center;
 }
 
+header {
+	margin-bottom: 2em;
+}
+
 footer {
 	display: block;
 	clear: both;
@@ -14,6 +18,7 @@ footer {
 
 h1, h2, .breaker {
 	clear: both;
+	margin: 1em 0 0.2em 0;
 }
 
 h1 {
@@ -52,4 +57,9 @@ a:hover {
 .big-size {
 	width: 960px;
 	height: 960px;
+}
+
+#top-menu {
+	font-weight: bold;
+	font-size: 140%;
 }
