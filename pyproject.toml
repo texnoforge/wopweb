@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "wopweb"
+dynamic = ["version"]
+description = "Words of Power Web Browser"
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "texnoforge", email = "voice@texnoforge.dev" },
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "click",
+    "dynaconf",
+    "flask",
+    "pycairo",
+    "sqlalchemy",
+    "texnomagic",
+]
+
+[project.scripts]
+wopweb = "wopweb.cli:main"
+
+[project.urls]
+"Bug Tracker" = "https://github.com/texnoforge/wopweb/issues"
+Docs = "https://texnoforge.github.io/texnomagic"
+Homepage = "https://github.com/texnoforge/wopweb/"
+
+[tool.hatch.version]
+path = "wopweb/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/wopweb",
+]
