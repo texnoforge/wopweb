@@ -16,9 +16,6 @@ from wopweb import update as update_
 from wopweb.config import cfg
 
 
-DB_TEST = 'sqlite:///C:\\Users\\yac\\source\\py\\wopweb\\test.db'
-
-
 CONTEXT_SETTINGS = {
     'help_option_names': ['-h', '--help'],
 }
