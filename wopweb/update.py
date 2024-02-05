@@ -33,14 +33,16 @@ def update_db(abcs=None):
         print(tabc)
         mabc = models.Alphabet(
             name=tabc.name,
-            handle=tabc.handle)
+            handle=tabc.handle,
+        )
         db.db_session.add(mabc)
         for tsymbol in tabc.symbols:
             msymbol = models.Symbol(
+                meaning=tsymbol.meaning,
                 name=tsymbol.name,
                 handle=tsymbol.handle,
-                meaning=tsymbol.meaning,
-                abc=mabc)
+                abc=mabc,
+            )
             db.db_session.add(msymbol)
 
     db.db_session.commit()

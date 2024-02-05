@@ -7,8 +7,8 @@
 
 {% block content %}
 {% for s in abc.symbols %}
-	<a class="symbol-preview" href="{{ url_for('symbol', abc=abc.handle, symbol=s.handle) }}" title="{{ s.name }}">
-		<img class="medium-size" src="/dynamic/img/symbols/{{ abc.handle }}/{{ s.handle }}.svg" alt="{{ s.name }}" />
+	<a class="symbol-preview" href="{{ url_for('symbol', abc=abc.handle, symbol=s.meaning) }}" title="{{ s.name }}">
+		<img class="medium-size" src="/dynamic/img/symbols/{{ abc.handle }}/{{ s.meaning }}.svg" alt="{{ s.name }}" />
 	</a>
 {% endfor %}
 <br class="breaker">
