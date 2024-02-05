@@ -55,6 +55,6 @@ def draw_images(outpath, abcs=None, format='svg'):
         abc_path = symbols_path / abc.handle
         abc_path.mkdir(exist_ok=True)
         for symbol in abc.symbols:
-            symbol_path = abc_path / f"{symbol.handle}.{format}"
+            symbol_path = abc_path / f"{symbol.meaning}.{format}"
             print(f"DRAW: {symbol_path}")
             draw_symbol(symbol, symbol_path, format=format)

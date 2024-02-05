@@ -22,17 +22,17 @@ class Alphabet(Base):
 class Symbol(Base):
     __tablename__ = 'symbol'
     id = Column(Integer, primary_key=True)
+    meaning = Column(String)
     name = Column(String)
     handle = Column(String)
-    meaning = Column(String)
     abc_id = Column(Integer, ForeignKey('abc.id'))
 
     abc = relationship("Alphabet")
 
-    def __init__(self, name, handle, meaning, abc=None):
+    def __init__(self, meaning, name, handle, abc=None):
+        self.meaning = meaning
         self.name = name
         self.handle = handle
-        self.meaning = meaning
         self.abc = abc
 
     def __repr__(self):

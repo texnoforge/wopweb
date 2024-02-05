@@ -32,7 +32,7 @@ def symbol(abc, symbol):
     abc_ = models.Alphabet.query.filter(models.Alphabet.handle == abc).first()
     if not abc_:
         abort(404)
-    symbols = [s for s in abc_.symbols if s.handle == symbol]
+    symbols = [s for s in abc_.symbols if symbol in [s.meaning, s.handle, s.name]]
     if not symbols:
         abort(404)
     symbol_ = symbols[0]
