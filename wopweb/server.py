@@ -5,7 +5,8 @@ from wopweb.config import cfg
 from wopweb import models
 
 
-__version__ = '0.1.0'
+PORT_DEFAULT = 2323
+
 
 db.get_db()
 app = Flask(__name__)
@@ -54,3 +55,7 @@ def dynamic(fn):
 @app.teardown_appcontext
 def shutdown_session(exception=None):
     db.close_db()
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=PORT_DEFAULT, debug=True)

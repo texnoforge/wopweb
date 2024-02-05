@@ -1,8 +1,8 @@
 """
 wopweb CLI
 """
-from genericpath import exists
 import sys
+import webbrowser
 
 import click
 
@@ -13,6 +13,7 @@ from wopweb import db as db_
 from wopweb import draw
 from wopweb import mods
 from wopweb import update as update_
+from wopweb import server as server_mod
 from wopweb.config import cfg
 
 
@@ -39,6 +40,27 @@ def cli(config):
     """
     if config:
         cfg.load_file(path=config)
+
+
+@cli.command()
+@click.option('-p', '--port', type=int,
+              default = server_mod.PORT_DEFAULT, show_default=True,
+              help="Run on specified port.")
+@click.option('-d', '--debug', is_flag=True,
+              help="Debug server.")
+@click.option('-o', '--open', is_flag=True,
+              help="Open server in web browser.")
+def server(port, debug, open):
+    """
+    Run local wopweb server.
+    """
+    if open:
+        # open browser first
+        url = f'http://localhost:{port}/'
+        print(f"Opening web browser: {url}")
+        webbrowser.open(url)
+
+    server_mod.app.run(host='0.0.0.0', port=port, debug=debug)
 
 
 @cli.command()
