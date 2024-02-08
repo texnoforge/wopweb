@@ -4,3 +4,4 @@ flask
 pycairo
 sqlalchemy
 texnomagic
+toml

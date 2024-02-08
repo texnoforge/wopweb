@@ -23,6 +23,7 @@ dependencies = [
     "pycairo",
     "sqlalchemy",
     "texnomagic",
+    "toml",
 ]
 
 [project.scripts]

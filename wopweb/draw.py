@@ -51,10 +51,14 @@ def draw_images(outpath, abcs=None, format='svg'):
 
     symbols_path.mkdir(parents=True, exist_ok=True)
 
-    for abc in abcs.abcs.get('mods'):
+    n = 0
+    for abc in abcs.abcs.get('tags'):
         abc_path = symbols_path / abc.handle
         abc_path.mkdir(exist_ok=True)
         for symbol in abc.symbols:
             symbol_path = abc_path / f"{symbol.meaning}.{format}"
             print(f"DRAW: {symbol_path}")
             draw_symbol(symbol, symbol_path, format=format)
+            n += 1
+
+    print(f"\n{n} symbols drawn 🖼")
