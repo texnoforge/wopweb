@@ -29,7 +29,7 @@ def update_db(abcs=None):
 
     print("inserting alphabets:")
     db.init_db()
-    for tabc in abcs.abcs['mods']:
+    for tabc in abcs.abcs['user']:
         print(f"- {tabc}")
         mabc = models.Alphabet(
             name=tabc.name,

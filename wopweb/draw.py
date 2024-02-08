@@ -1,23 +1,24 @@
 from pathlib import Path
+import shutil
 
 import cairo
 
 from texnomagic.abcs import TexnoMagicAlphabets
 
 
-def draw_symbol(symbol, out, format='svg'):
+def export_drawing(symbol, out, res=1000, format='svg'):
     drawing = symbol.random_drawing()
     if not drawing:
         return False
 
     if format == 'png':
-        surface = cairo.ImageSurface(cairo.FORMAT_RGB24, 640, 640)
+        surface = cairo.ImageSurface(cairo.FORMAT_RGB24, res, res)
     else:
-        surface = cairo.SVGSurface(out, 640, 640)
+        surface = cairo.SVGSurface(out, res, res)
 
     ctx = cairo.Context(surface)
 
-    ctx.scale(640, 640)
+    ctx.scale(res, res)
     ctx.set_source_rgb(0, 0, 0)
     ctx.paint()
     ctx.fill()
@@ -52,13 +53,25 @@ def draw_images(outpath, abcs=None, format='svg'):
     symbols_path.mkdir(parents=True, exist_ok=True)
 
     n = 0
-    for abc in abcs.abcs.get('tags'):
+    missing = []
+    for abc in abcs.abcs.get('user'):
         abc_path = symbols_path / abc.handle
         abc_path.mkdir(exist_ok=True)
         for symbol in abc.symbols:
-            symbol_path = abc_path / f"{symbol.meaning}.{format}"
-            print(f"DRAW: {symbol_path}")
-            draw_symbol(symbol, symbol_path, format=format)
-            n += 1
+            out_path = abc_path / f"{symbol.meaning}.{format}"
+            image_path = symbol.get_image_path(format=format)
+            if image_path.exists():
+                print(f"COPY: {image_path} -> {out_path}")
+                shutil.copy(image_path, out_path)
+            else:
+                print(f"DRAW: {out_path}")
+                if export_drawing(symbol, out_path, format=format):
+                    n += 1
+                else:
+                    print(f"  ERROR: no image for {symbol.meaning}")
+                    missing.append(f"{abc.handle}/{symbol.meaning}")
 
     print(f"\n{n} symbols drawn 🖼")
+    if missing:
+        mstr = ", ".join(missing)
+        print(f"\n{len(missing)} missing: {mstr}")
