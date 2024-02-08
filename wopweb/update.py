@@ -19,18 +19,18 @@ def drop_tables():
 
 
 def update_db(abcs=None):
-    print("updating WoP DB...")
+    print(f"UPDATE DB: {db.db_engine.url}")
     if not abcs:
         abcs = TexnoMagicAlphabets()
         abcs.load()
 
-    print("deleting old data...")
+    print("deleting old data")
     drop_tables()
 
-    print("populating DB...")
+    print("inserting alphabets:")
     db.init_db()
     for tabc in abcs.abcs['mods']:
-        print(tabc)
+        print(f"- {tabc}")
         mabc = models.Alphabet(
             name=tabc.name,
             handle=tabc.handle,
