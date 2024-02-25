@@ -5,6 +5,8 @@ import cairo
 
 from texnomagic.abcs import TexnoMagicAlphabets
 
+from wopweb.config import cfg
+
 
 def export_drawing(symbol, out, res=1000, format='svg'):
     drawing = symbol.random_drawing()
@@ -42,10 +44,12 @@ def export_drawing(symbol, out, res=1000, format='svg'):
     return True
 
 
-def draw_images(outpath, abcs=None, format='svg'):
+def draw_images(outpath, abcs=None, abcs_tag=None, format='svg'):
     if not abcs:
         abcs = TexnoMagicAlphabets()
         abcs.load()
+    if not abcs_tag:
+        abcs_tag = cfg.abcs_tag
 
     images_path = Path(outpath) / 'img'
     symbols_path = images_path / 'symbols'
@@ -54,7 +58,7 @@ def draw_images(outpath, abcs=None, format='svg'):
 
     n = 0
     missing = []
-    for abc in abcs.abcs.get('user'):
+    for abc in abcs.abcs.get(abcs_tag):
         abc_path = symbols_path / abc.handle
         abc_path.mkdir(exist_ok=True)
         for symbol in abc.symbols:

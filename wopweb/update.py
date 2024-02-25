@@ -1,6 +1,7 @@
 from texnomagic.abcs import TexnoMagicAlphabets
 
 from wopweb import db
+from wopweb.config import cfg
 from wopweb import models
 
 
@@ -18,18 +19,20 @@ def drop_tables():
     # models.Alphabet.query.delete()
 
 
-def update_db(abcs=None):
+def update_db(abcs=None, abcs_tag=None):
     print(f"UPDATE DB: {db.db_engine.url}")
     if not abcs:
         abcs = TexnoMagicAlphabets()
         abcs.load()
+    if not abcs_tag:
+        abcs_tag = cfg.abcs_tag
 
     print("deleting old data")
     drop_tables()
 
     print("inserting alphabets:")
     db.init_db()
-    for tabc in abcs.abcs['user']:
+    for tabc in abcs.abcs[abcs_tag]:
         print(f"- {tabc}")
         mabc = models.Alphabet(
             name=tabc.name,
