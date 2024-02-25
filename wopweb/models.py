@@ -15,6 +15,9 @@ class Alphabet(Base):
         self.name = name
         self.handle = handle
 
+    def __str__(self):
+        return f'{self.name}'
+
     def __repr__(self):
         return f'<Alphabet {self.name!r}>'
 
@@ -35,5 +38,10 @@ class Symbol(Base):
         self.handle = handle
         self.abc = abc
 
+    def __str__(self):
+        if self.name == self.meaning:
+            return self.name
+        return f'{self.name} ({self.meaning})'
+
     def __repr__(self):
-        return f'<Symbol {self.name!r}/{self.meaning!r}>'
+        return f'<Symbol {self.name} ({self.meaning})>'
