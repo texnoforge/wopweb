@@ -8,8 +8,8 @@
 {% for meaning, symbols_ in symbols.items() %}
 <h2>{{ meaning }}</h2>
 {% for s in symbols_ %}
-<a class="symbol-preview" href="{{ url_for('symbol', abc=s.abc.handle, symbol=s.handle) }}" title="{{ s.name }}">
-	<img class="medium-size" src="/dynamic/img/symbols/{{ s.abc.handle }}/{{ s.handle }}.svg" alt="{{ s.name }}" />
+<a class="symbol-preview" href="{{ url_for('symbol', abc=s.abc.handle, symbol=s.handle) }}" title="{{ s.abc.name }} > {{ s }}">
+	<img class="medium-size" src="/dynamic/img/symbols/{{ s.abc.handle }}/{{ s.handle }}.svg" alt="{{ s.abc.name }} > {{ s }}" />
 </a>
 {% endfor %}
 {% endfor %}
