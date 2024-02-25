@@ -19,6 +19,8 @@ DEFAULT_DYNAMIC_PATH = USER_DATA_PATH / 'dynamic'
 DEFAULT_DB_PATH = USER_DATA_PATH / 'wopweb.db'
 DEFAULT_DB = f'sqlite:///{DEFAULT_DB_PATH}'
 
+DEFAULT_ABCS_TAG = 'user'
+
 
 cfg = Dynaconf(
     envvar_prefix='WOPWEB',
@@ -28,6 +30,7 @@ cfg = Dynaconf(
 cfg.validators.register(
     Validator("db", default=DEFAULT_DB),
     Validator("dynamic_path", default=DEFAULT_DYNAMIC_PATH),
+    Validator("abcs_tag", default=DEFAULT_ABCS_TAG),
 )
 
 cfg.validators.validate()
